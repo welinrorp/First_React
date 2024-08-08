@@ -1,16 +1,25 @@
-export default function Tweet(props){
+import { ptBR } from 'date-fns/locale'
+import { formatDistanceToNow } from 'date-fns'
+import styles from './Tweet.module.css'
+
+export default function Tweet({tweet}){
+    const publishedTonew = formatDistanceToNow(new Date('2024-05-10'),{
+    locale: ptBR,
+    addsufix : true,
+
+})
 return (
-    <div className={styles.tweetontainer}>
-        <img src={'https://avatars.githubusercontent.com/u/62801449?s=400&u=d0f908af891158a3ff26dd27be96c818bb11b16c&v=4'} />
+    <div className={styles.tweetContainer}>
+        <img className={styles.avatar} src={tweet.user.picture} />
         <div className={styles.user}>
-            <span>Wellington</span>
-            <span>@welinro</span>
-            <span> Há data</span>
+            <span className={styles.userName}>{tweet.user.name}</span>
+            <span className={styles.userUserName}>{tweet.user.username}</span>
+            <span className={styles.date}>{publishedTonew}</span>
 
         </div>
-        <div className={styles.tweet.text}>
+        <div className={styles.tweetText}>
 
-             {props.children}
+             {tweet.text}
         </div>
     </div>
     
