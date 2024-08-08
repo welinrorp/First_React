@@ -1,6 +1,7 @@
 import TextInput from "../componentes/TextInput";
 import { useState } from 'react';
 import styles from "./index.module.css"
+import Tweet from "../componentes/Tweet";
 
     
 export default function Index(){
@@ -22,9 +23,9 @@ export default function Index(){
 
     return(
         <div>
-            <h1 className={styles.pageTitle} >Welllington Tweet</h1>
-            <div>
-                <img src={'https://github.com/wesleygado.png'}/>
+            <h1 className={styles.pageTitle} >Wellington Tweet</h1>
+            <div className={styles.tweetConatiner}>
+                <img className={styles.avatar} src={'https://avatars.githubusercontent.com/u/62801449?s=400&u=d0f908af891158a3ff26dd27be96c818bb11b16c&v=4'}/>
                 <TextInput 
                     placeholder={'O que esta acontecendo'}
                     rows={3}
@@ -33,13 +34,18 @@ export default function Index(){
                     onChange={onTextChange}
                 />
             </div>
-            <div>
+            <div className={styles.buttonContainer}>
                 <div>{text.length} / {maxLength}</div>
-                <button onClick={sendTweet}>Twetar</button>
+                <button onClick={sendTweet}
+                className={styles.postButton}
+                >Twetar</button>
             </div>
             <ul>
             {tweetList.map(tweet => {
-                return <li>{tweet}</li>   
+                return (
+                    <li><Tweet children={tweet}/> </li>
+                    
+                ) 
            
                 })}
             </ul>
