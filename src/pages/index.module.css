@@ -39,6 +39,10 @@ border-radius: 100%;
 .postButton:hover {
     opacity: 0.5;
 }
+.postButton:disabled{
+    background-color: none;
+    pointer-events: none;
+}
 
 .tweetList{
     list-style-type:none;
